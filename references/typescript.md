@@ -60,14 +60,18 @@ function area(shape: Shape): number {
     case "rect":
       return shape.w * shape.h;
     default:
-      throw value satisfies never;
+      assertNever(shape.kind);
   }
+}
+
+function assertNever(value: never) {
+  throw new Error("Expected never but received: " + value);
 }
 ```
 
 ### `satisfies` for Validated Literals
 
-**When to use:** You want the value to match a type contract but keep the narrowest possible inferred type (e.g. config objects, route maps).
+**When to use:** You want the value to match a type contract but keep the narrowest possible inferred type.
 
 ```typescript
 type RouteConfig = Record<string, { path: string }>;
