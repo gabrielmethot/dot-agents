@@ -36,10 +36,7 @@ test('submits the form', async () => {
 
 ### `userEvent` with Fake Timers
 
-**When to use:** When your test suite uses fake timers (`vi.useFakeTimers()` /
-`jest.useFakeTimers()`) and you have user interactions. Without `advanceTimers`,
-`userEvent` internally awaits real-time delays that never resolve under fake timers,
-causing tests to hang or behave incorrectly.
+**When to use:** When your test suite uses fake timers (`e.g. vi.useFakeTimers()` for Vitest) and you have user interactions. Without `advanceTimers`, `userEvent` internally awaits real-time delays that never resolve under fake timers, causing tests to hang or behave incorrectly.
 
 Pass the timer advancement function via the `advanceTimers` option so `userEvent` can
 drive fake time forward itself during interactions:
